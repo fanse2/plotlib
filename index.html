@@ -15,13 +15,13 @@
         let myPlotter = new XYPlotter('myCanvas')
         myPlotter.transformXY()
 
-        let numPoint = 500
-        const xPoints = Array(numPoint).fill(0).map(()=>Math.random()*myPlotter.xMax)
-        const yPoints = Array(numPoint).fill(0).map(()=>Math.random()*myPlotter.yMax)
+        let numPoints = 500
+        const xPoints = Array(numPoints).fill(0).map(()=>Math.random()*myPlotter.xMax)
+        const yPoints = Array(numPoints).fill(0).map(()=>Math.random()*myPlotter.yMax)
 
-        myPlotter.plotPoint(numPoint,xPoints,yPoints,'blue')
+        myPlotter.plotPoint(numPoints, xPoints, yPoints, 'blue')
 
-        myPlotter.plotLine(0,0,myPlotter.xMax,myPlotter.yMax,'red')
+        myPlotter.plotLine(0, 0, myPlotter.xMax, myPlotter.yMax, 'red')
     </script>
 </body>
 </html>
