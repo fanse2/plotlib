@@ -6,6 +6,8 @@ class XYPlotter {
         this.yMin = 0
         this.xMax = this.canvas.width
         this.yMax = this.canvas.height
+        this.xF = 1
+        this.yF = 1
     }
 
     plotLine(x0,y0,x,y,color) {
@@ -19,12 +21,19 @@ class XYPlotter {
         this.ctx.transform(1,0,0,-1,0,this.canvas.height)
     }
 
-    plotPoint(n,xArr,yArr,color,radius = 3) {
+    plotPoints(n,xArr,yArr,color,radius = 3) {
         for(let i=0; i<n; i++) {
             this.ctx.fillStyle = color
             this.ctx.beginPath()
             this.ctx.ellipse(xArr[i],yArr[i],radius,radius,0,0,Math.PI*2)
             this.ctx.fill()
         }
+    }
+
+    plotPoint(x,y,color,radius = 3) {
+        this.ctx.fillStyle = color
+        this.ctx.beginPath()
+        this.ctx.ellipse(x*this.xF, y* this.yF, radius, radius, 0, 0, Math.PI * 2)
+        this.ctx.fill()
     }
 }

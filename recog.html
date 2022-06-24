@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recognition</title>
+    <script src="myplotlib.js"></script>
+</head>
+<body>
+    <canvas id="myCanvas" width="400px" height="400px" style="width:100%;max-width:400px;border:1px solid black"></canvas>
+    <script>
+        const plotter = new XYPlotter('myCanvas')
+        plotter.transformXY()
+        const xMax = plotter.xMax
+        const yMax = plotter.yMax
+        const xMin = plotter.xMin
+        const yMin = plotter.yMin
+
+        // Create Random XY Points
+        const numPoints = 500
+        const xPoints = []
+        const yPoints = []
+        for(let i=0; i<numPoints; i++) {
+            xPoints[i] = Math.random() * xMax;
+            yPoints[i] = Math.random() * yMax
+        }
+
+        // Line Function
+        function f(x) {
+            return x * 1.2 + 50
+        }
+
+        // Plot the Line
+        plotter.plotLine(xMin,f(xMin),xMax,f(xMax),'black')
+
+        // Compute Desired Answers
+        const desired = []
+        for(let i=0; i<numPoints; i++) {
+            desired[i] = 0
+            if(yPoints[i] > f(xPoints[i])) desired[i] = 1
+        }
+
+        // Display Desired Result
+        for (let i=0; i<numPoints; i++) {
+            let color = 'blue'
+            if(desired[i]) color = 'black'
+            plotter.plotPoint(xPoints[i], yPoints[i], color)
+            // console.log(xPoints[i], yPoints[i], color)
+        }
+    </script>
+</body>
+</html>

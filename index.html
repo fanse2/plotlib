@@ -19,7 +19,7 @@
         const xPoints = Array(numPoints).fill(0).map(()=>Math.random()*myPlotter.xMax)
         const yPoints = Array(numPoints).fill(0).map(()=>Math.random()*myPlotter.yMax)
 
-        myPlotter.plotPoint(numPoints, xPoints, yPoints, 'blue')
+        myPlotter.plotPoints(numPoints, xPoints, yPoints, 'blue')
 
         myPlotter.plotLine(0, 0, myPlotter.xMax, myPlotter.yMax, 'red')
     </script>
